@@ -63,6 +63,12 @@ public class StudentTest {
 		System.out.println(student);
 	}
 	
+	@Test
+	public void testSelectStudentWithAddressAndGrade(){
+		Student student = sm.selectStudentWithAddressAndGrade(1);
+		System.out.println(student);
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		sqlSession.close();

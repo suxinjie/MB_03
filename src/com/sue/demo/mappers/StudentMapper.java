@@ -62,4 +62,18 @@ public interface StudentMapper {
 	)
 	public Student selectStudentByGradeId(int id);
 	
+	@Select("select * from t_student where id=#{id}")
+	@Results
+	(
+		{
+			@Result(id=true, column="id", property="id"),
+			@Result(column="name", property="name"),
+			@Result(column="age", property="age"),
+			@Result(column="addressId", property="address", one=@One(select="com.sue.demo.mappers.AddressMapper.findByid")),
+			@Result(column="gradeId", property="grade", one=@One(select="com.sue.demo.mappers.GradeMapper.findById"))
+
+		}
+	)
+	public Student selectStudentWithAddressAndGrade(int id);
+	
 }
